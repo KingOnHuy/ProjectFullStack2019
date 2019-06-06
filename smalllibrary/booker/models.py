@@ -26,4 +26,4 @@ class Transaction(models.Model):
     action = models.CharField(max_length=255)
     created = models.DateTimeField(auto_now_add=True)
 
-# https://prod.liveshare.vsengsaas.visualstudio.com/join?B4CF6BB49D5786776FFEB74A9FF024073C85
+# https://prod.liveshare.vsengsaas.visualstudio.com/join?B4CF6BB49D5786776FFEB74A9FF024073C85s
