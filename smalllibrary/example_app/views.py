@@ -20,4 +20,4 @@ def home(request):
 @login_required
 def logoutView(request):
     logout(request)
-    return redirect('home')
+    return redirect('example_app:home')

@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'tuauth',
+    'booker',
     'example_app',
+    
 ]
 
 MIDDLEWARE = [
