@@ -20,6 +20,7 @@ class Book(models.Model):
     binding = models.ForeignKey(Binding,on_delete=models.SET_NULL, null=True)
     year = models.PositiveIntegerField()
     publisher = models.ForeignKey(Publisher,on_delete=models.SET_NULL, null=True)
+    is_available = models.BooleanField(default=False)
     def __str__(self):
         return self.title
 

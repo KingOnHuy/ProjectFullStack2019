@@ -7,7 +7,7 @@ from .models import Book, Binding, Publisher, Borrow, Transaction
 def list_book(request):
     print(request.user)
     context = dict()
-    context['books'] = Book.objects.all().order_by('id')
+    context['books'] = Book.objects.filter(is_available=True).order_by('id')
     return render(request, 'booker/book.html', context)
 
 @login_required
@@ -17,14 +17,20 @@ def list_borrow(request):
     return render(request, 'booker/borrow.html', context)
 
 @login_required
-def return_book(request):
+def return_book(request,pk):
     if request.method == 'GET':
         try:
+            borrow = Borrow.objects.get(pk=pk)
+            book = borrow.book
+            book.is_available = True
+            book.save()
+            Borrow.objects.filter(pk=pk).delete()
             Transaction.objects.create(
-                book = book,
-                actor = actor,
+                book = borrow.book,
+                actor = request.user,
                 action = "return",
             )
+            return redirect('booker:list_borrow')
         except Exception as e:
             print(e)
             raise e
@@ -35,6 +41,7 @@ def borrow_book(request,pk):
         try:
             book = Book.objects.get(pk=pk)
             actor = request.user
+            Book.objects.filter(pk=pk).update(is_available=False)
             Transaction.objects.create(
                 book = book,
                 actor = actor,

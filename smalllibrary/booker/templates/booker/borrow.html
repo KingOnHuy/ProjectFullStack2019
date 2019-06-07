@@ -17,6 +17,12 @@ Borrow List
             {% for borrow in borrows %}
                 <tr>
                     <td>{{ borrow.book }}</td>
+                    <td>
+                        <a class="uk-button uk-button-default uk-button-small" 
+                        href="{% url 'booker:return_book' borrow.pk %}">
+                            Return
+                        </a>
+                </td>
                 </tr>
             {% endfor %}
             </tbody>
