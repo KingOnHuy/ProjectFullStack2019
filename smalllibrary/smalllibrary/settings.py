@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'tuauth',
     'booker',
     'example_app',
-    
 ]
 
 MIDDLEWARE = [

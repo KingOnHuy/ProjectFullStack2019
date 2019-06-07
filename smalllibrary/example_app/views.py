@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 # Create your views here.
@@ -20,4 +21,7 @@ def home(request):
 @login_required
 def logoutView(request):
     logout(request)
-    return redirect('example_app:home')
+    
+    return HttpResponseRedirect('https://api.tu.ac.th/logout/?next={}'.format(
+        request.META['HTTP_REFERER']
+    ))

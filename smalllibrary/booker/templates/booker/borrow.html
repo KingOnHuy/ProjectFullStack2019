@@ -1,0 +1,26 @@
+{% extends 'booker/base.html' %}
+{% block titlename %}
+Borrow List
+{% endblock %}
+{% block content %}
+<div class="uk-section uk-section-secondary">
+    <div class="uk-container">
+        Your Borrow List
+        <table class="uk-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for borrow in borrows %}
+                <tr>
+                    <td>{{ borrow.book }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

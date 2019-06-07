@@ -1,0 +1,31 @@
+{% extends 'booker/base.html' %}
+{% block titlename %}
+Book
+{% endblock %}
+{% block content %}
+<div class="uk-section uk-section-secondary">
+    <div class="uk-container">
+    Book
+        <table class="uk-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ISBN_10</th>
+                    <th>Title</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for book in books %}
+                <tr>
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.ISBN_10 }}</td>
+                    <td>{{ book.title }}</td>
+                    <td><a class="uk-button uk-button-default uk-button-small" href="{% url 'booker:borrow_book' book.pk %}">Borrow</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -6,6 +6,7 @@ app_name = 'booker'
 urlpatterns = [
     # path('', borrowing, name='home'),
     path('', list_book, name='book'),
-    path('borrowing/<int:pk>/', borrow_book, name='borrow_book')
+    path('borrowing/<int:pk>/', borrow_book, name='borrow_book'),
+    path('borrowlist/', list_borrow, name='list_borrow'),
     # path('logout/', logoutView, name='logout'),
 ]
