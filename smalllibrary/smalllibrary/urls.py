@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('oauth/', include('social_django.urls', namespace='social')),
     path('example/', include('example_app.urls', namespace='example_app')),
-    path('book/', include('booker.urls', namespace='borrowing')),
+    path('book/', include('booker.urls', namespace='booker')),
 ]

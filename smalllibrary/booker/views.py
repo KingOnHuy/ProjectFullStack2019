@@ -4,6 +4,7 @@ from .models import Book, Binding, Publisher, Borrow, Transaction
 # from .forms import ItemForm
 
 def list_book(request):
+    print(request.user)
     context = dict()
     context['books'] = Book.objects.all().order_by('id')
     return render(request, 'book.html', context)
@@ -13,12 +14,11 @@ def list_borrow(request):
     context['borrows'] = Borrow.objects.all().order_by('id')
     return render(request, 'borrow.html', context)
 
-def borrowing(request):
+def borrow_book(request,pk):
     if request.method == 'POST':
         try:
             book = Book.objects.get(pk=pk)
-            actor = request.user()
-            print(actor)
+            actor = request.user
             Transaction.objects.create(
                 book = book,
                 actor = actor,
